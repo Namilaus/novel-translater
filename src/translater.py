@@ -1,12 +1,11 @@
-from content import getContent
 import translators as translator
+from time import sleep
 
-def translatedText(url)->str:
+isFinish = False
 
-    novel_content = getContent('https://www.69shu.com/txt/1464/6929496')
-
+def translatedText(novel_content)->str:
     text = translator.translate_html(novel_content,translator='google')
-
+    isFinish = True
     return text
 
 

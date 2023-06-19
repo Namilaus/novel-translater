@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 def source(url):
     resContent = requests.get(url) # https://www.69shu.com/txt/1464/6929496
-    return res.content
+    return resContent.content
 
 def parser(sourceCode):
     soup = BeautifulSoup(sourceCode,'html.parser')

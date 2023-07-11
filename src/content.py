@@ -5,14 +5,17 @@ def source(url):
     resContent = requests.get(url) # https://www.69shu.com/txt/1464/6929496
     return resContent.content
 
-def parser(sourceCode):
+def parser(sourceCode,url):
     soup = BeautifulSoup(sourceCode,'html.parser')
     content = soup.find("div",{"class":"txtnav"})
+    if content is None:
+        return "either book is finished or the url is changed last url =>"+url
+
     return content.getText()
 
 
 def getContent(url)->str:
-    return parser(source(url))
+    return parser(source(url),url)
 
 def getBookNameUrl(url)->str:
     url = url[:-8]

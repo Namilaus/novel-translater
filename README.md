@@ -11,6 +11,6 @@ test = database(dburl, url, 50)
 test.connectToCollection()
 ```
 
-##after writing those things in database.py you can run it
+## after writing those things in database.py you can run it
 
 and then the contnet will be safed into your db

@@ -3,8 +3,14 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route("/")
-def hello_world():
+def homePage():
 
-    return 0
+    return """ welcome to 69shu autotranslate. you just need to give the link of the first page of the book you want to be translated:
+        like;
+        url:url,
+        length:200
+
+            """
+
 
 app.run()

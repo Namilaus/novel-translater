@@ -9,7 +9,7 @@ def parser(sourceCode,url):
     soup = BeautifulSoup(sourceCode,'html.parser')
     content = soup.find("div",{"class":"txtnav"})
     if content is None:
-        return "either book is finished or the url is changed last url =>"+url
+        return None
 
     return content.getText()
 
@@ -18,6 +18,20 @@ def getContent(url)->str:
     return parser(source(url),url)
 
 def getBookNameUrl(url)->str:
+    # in 69shu its not always the same but mostly so
+    url = url[:-8]
+    url = list(url)
+    #url.insert(26, 'C')
+    url.insert(31,'.htm')
+    url.pop()
+    bookurl = ""
+    for el in url:
+        bookurl+=el
+
+    return bookurl
+
+def getbookNameUrl2(url)->str:
+    # another one
     url = url[:-8]
     url = list(url)
     url.insert(26, 'C')
@@ -33,10 +47,16 @@ def getBooksName(url)->str:
     source = requests.get(url)
     soup = BeautifulSoup(source.content,'html.parser')
     name = soup.find("div",{"class":"booknav2"}).h1
+    if name is None:
+        url = getbookNameUrl2(url)  
+        source = requests.get(url)
+        soup = BeautifulSoup(source.content,'html.parser')
+        name = soup.find("div",{"class":"booknav2"}).h1
     return name.getText()
 
-def dynamicUrl(url,length)->str:
+def dynamicUrlEasy(url,length)->str:
     array = list()
+    array.append(url)
     for i in range(1,length+1):
         url1 = url.split('/')
         number = int(url1[-1]) + i
@@ -52,6 +72,8 @@ def dynamicUrl(url,length)->str:
         array.append(realUrl)
 
     return array;
+
+
 
 #url = dynamicUrl('https://www.69shu.com/txt/1464/6929496', 10)
 #print(url[-1])

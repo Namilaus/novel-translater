@@ -5,8 +5,9 @@ novel translater based on 69shu.com
 ### its kinda work... for example
 
 ```python
-url = 'https://www.69shu.com/txt/47115/31439983'
+url = 'https://www.69shu.com/txt/47115/31439983' # books url
 dburl = '' # your authentacation key from mongodb
+chapter = 50 # how many chapter should be translated
 test = database(dburl, url, 50)
 test.connectToCollection()
 ```

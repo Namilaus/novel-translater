@@ -2,7 +2,7 @@
 novel translater based on 69shu.com
 
 
-### its kinda work... for example
+### its kinda working... for example
 
 ```python
 url = 'https://www.69shu.com/txt/47115/31439983' # books url
